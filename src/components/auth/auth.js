@@ -121,7 +121,7 @@ function Auth() {
                 {isSignUp ? "Sign Up" : "Sign In"}
               </Button>
               <GoogleLogin
-                clientId="863603533939-joibgtapjt59bov5t149qf3ct8bk66sd.apps.googleusercontent.com"
+                clientId={process.env.REACT_APP_CLIENT_ID}
                 className="google_btn"
                 buttonText="Sign up with Google"
                 onSuccess={googleSuccess}
