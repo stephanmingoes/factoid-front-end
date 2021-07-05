@@ -11,7 +11,7 @@ API.interceptors.request.use((req) => {
 
   return req;
 });
-// const url = "https://factoid-api.herokuapp.com/posts";
+const url = "https://factoid-backend.herokuapp.com";
 
 export const fetchPosts = () => API.get("/posts");
 
@@ -23,5 +23,5 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
-export const signIn = (state) => axios.post("/user/signin", state);
+export const signIn = (state) => API.post("/user/signin", state);
 export const signUp = (state) => API.post("/user/signup", state);
