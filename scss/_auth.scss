@@ -1,0 +1,73 @@
+.parent {
+    margin-top: 1rem;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .auth_form {
+        @extend .form;
+        border: none;
+        max-width: 500px;
+        height: fit-content;
+
+        .input_flex {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 95%;
+        }
+
+        h2 {
+            margin-bottom: 2rem;
+        }
+        input {
+            border: 0.5px solid transparent;
+            font-size: 1rem;
+            color: #fff;
+            width: 90%;
+            padding: 0.9rem 1rem;
+            margin: 0 auto 1rem;
+            background-color: $color-1;
+            border-radius: 6px;
+
+            &:focus {
+                border: 0.5px solid #fff;
+                outline: none;
+            }
+        }
+
+        .password_field {
+            position: relative;
+            width: 100%;
+
+            .pass_visibilty {
+                top: 1.5rem;
+                right: 1.3rem;
+                position: absolute;
+            }
+        }
+
+        .btn {
+            margin: 0 auto 1rem;
+            width: 90%;
+            background-color: $color-3;
+        }
+        .google_btn {
+            border-radius: 6px !important;
+            margin: 0 auto;
+            width: 90%;
+
+            span {
+                margin: 0 auto;
+            }
+        }
+
+        p {
+            cursor: pointer;
+            opacity: 0.5;
+            margin: 1rem auto;
+        }
+    }
+}

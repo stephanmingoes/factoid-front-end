@@ -1,0 +1,35 @@
+@import "config";
+@import "header";
+@import "form";
+@import "auth";
+body {
+    background-color: $color-1;
+    color: $color-4;
+    font-family: sans-serif;
+    .main {
+        margin-top: 4rem;
+    }
+    .posts {
+        margin-bottom: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+}
+@media (min-width: 600px) {
+    .container {
+        flex-direction: row;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        flex-direction: row;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+}
