@@ -3,12 +3,14 @@ import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/post";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
 export default function Form({ currentId, setCurrentId }) {
+  const history = useHistory();
   const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
+    currentId ? state.posts.posts.find((p) => p._id === currentId) : null
   );
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -24,9 +26,16 @@ export default function Form({ currentId, setCurrentId }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(currentId);
+    if (postData.tags !== "") {
+      var newTags = postData.tags.map((tag) => tag.trim());
+    }
     if (currentId === 0 || currentId === null) {
-      dispatch(createPost({ ...postData, name: user?.result.name }));
+      dispatch(
+        createPost(
+          { ...postData, tags: newTags, name: user?.result.name },
+          history
+        )
+      );
       handleClear();
     } else {
       dispatch(updatePost(currentId, { ...postData, name: user?.result.name }));
@@ -34,7 +43,6 @@ export default function Form({ currentId, setCurrentId }) {
     }
   };
   const handleClear = () => {
-    console.log(currentId);
     setCurrentId(0);
     setPostData({
       title: "",
@@ -50,7 +58,7 @@ export default function Form({ currentId, setCurrentId }) {
   };
   if (!user?.result.name) {
     return (
-      <div className="form">
+      <div className="form shadow">
         <h4>Sign in to create a fact.</h4>
         <Button component={Link} to="/auth" variant="contained" className="btn">
           Sign In
@@ -59,7 +67,7 @@ export default function Form({ currentId, setCurrentId }) {
     );
   }
   return (
-    <div className="form">
+    <div className="form shadow">
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h3>{currentId ? "Edit" : "Share"} A fact</h3>
         <input
@@ -79,7 +87,10 @@ export default function Form({ currentId, setCurrentId }) {
         />
         <input
           onChange={(event) =>
-            setPostData({ ...postData, tags: event.target.value.split(",") })
+            setPostData({
+              ...postData,
+              tags: event.target.value.split(","),
+            })
           }
           type="text"
           name="tags"

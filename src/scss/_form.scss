@@ -1,0 +1,144 @@
+.form {
+    margin-bottom: 1.5rem;
+    background: $color-2;
+    border-radius: 6px;
+    text-align: center;
+    padding: 1rem;
+
+    h3 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    input,
+    textarea {
+        font-size: 1rem;
+        color: #fff;
+        width: 100%;
+        padding: 0.9rem 1rem;
+        margin-bottom: 0.7rem;
+        border: none;
+        background-color: $color-1;
+        border-radius: 6px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #fff;
+            opacity: 0.5;
+        }
+    }
+
+    input[type="file"] {
+        cursor: pointer;
+        background: transparent;
+        border: none;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        padding: 0.3rem 1.2rem;
+        border: none;
+        font-size: 1rem;
+        color: #fff;
+        border-radius: 6px;
+        &.btn-1 {
+            background-color: $color-3;
+            margin-bottom: 0.5rem;
+
+            &:hover {
+                background-color: #05b4a6;
+            }
+        }
+        &.btn-2 {
+            background-color: $color-6;
+
+            &:hover {
+                background-color: #bb0533;
+            }
+        }
+    }
+
+    .btn {
+        color: white;
+        margin: 1rem auto 1rem;
+        width: 90%;
+        background-color: $color-3;
+    }
+}
+
+.searches {
+    text-align: center;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: $color-2;
+    margin-bottom: 1rem;
+    h3 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+    .search {
+        font-size: 1rem;
+        color: #fff !important;
+        width: 100%;
+        padding: 0.9rem 1rem;
+        margin-bottom: 0.7rem;
+        border: none;
+        background-color: $color-1;
+        border-radius: 6px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #fff;
+            opacity: 0.5;
+        }
+    }
+
+    .search-chip {
+        @extend .search;
+        padding: 0.3rem 1rem;
+        .MuiChip-clickable {
+            margin-top: 0.3rem;
+            background-color: $color-3;
+            color: white;
+        }
+        .WAMuiChipInput-underline-14::before {
+            display: none;
+        }
+        .WAMuiChipInput-input-3 {
+            color: #fff;
+        }
+        .WAMuiChipInput-underline-14::after {
+            display: none;
+        }
+        .WAMuiChipInput-input-98 {
+            color: #fff;
+        }
+        .WAMuiChipInput-input-42 {
+            color: #fff;
+        }
+        .WAMuiChipInput-underline-109:after {
+            display: none;
+        }
+    }
+
+    .search-btn {
+        background-color: $color-3;
+        width: 100%;
+        &:hover {
+            background-color: #05b4a6;
+        }
+    }
+}

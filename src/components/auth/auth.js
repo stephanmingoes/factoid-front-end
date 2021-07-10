@@ -56,7 +56,7 @@ function Auth() {
     }
   }
   function googleFailure() {
-    console.log("Google Sign In was unsuccessful");
+    alert("Google Sign In was unsuccessful");
   }
   function switchMode() {
     setShowPassword(false);
@@ -162,7 +162,7 @@ function Auth() {
               <GoogleLogin
                 clientId="863603533939-joibgtapjt59bov5t149qf3ct8bk66sd.apps.googleusercontent.com"
                 className="google_btn"
-                buttonText="Login up with Google"
+                buttonText="Login with Google"
                 onSuccess={googleSuccess}
                 onFailure={googleFailure}
                 cookiePolicy="single_host_origin"

@@ -1,25 +1,47 @@
 import * as api from "../api/index";
 import * as actions from "../actionTypes/actionTypes";
 
-export const getPosts = () => async (dispatch) => {
+export const getPost = (id) => async (dispatch) => {
   try {
-    const { data } = await api.fetchPosts();
+    dispatch({ type: actions.START_LOADING });
+    const { data } = await api.fetchPost(id);
+
     dispatch({
-      type: actions.FETCH_ALL,
+      type: actions.FETCH_POST,
       payload: data,
     });
+    dispatch({ type: actions.STOP_LOADING });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const createPost = (newPost) => async (dispatch) => {
+export const getPosts = (page) => async (dispatch) => {
   try {
+    dispatch({ type: actions.START_LOADING });
+    const { data } = await api.fetchPosts(page);
+
+    dispatch({
+      type: actions.FETCH_ALL,
+      payload: data,
+    });
+    dispatch({ type: actions.STOP_LOADING });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const createPost = (newPost, history) => async (dispatch) => {
+  try {
+    dispatch({ type: actions.START_LOADING });
     const { data } = await api.createPost(newPost);
+
+    history.push(`/posts/${data._id}`);
     dispatch({
       type: actions.CREATE,
       payload: data,
     });
+    dispatch({ type: actions.STOP_LOADING });
   } catch (err) {
     console.log(err);
   }
@@ -58,5 +80,16 @@ export const likePost = (id) => async (dispatch) => {
     dispatch({ type: actions.LIKE, payload: data });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getPostBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    dispatch({ type: actions.START_LOADING });
+    const { data } = await api.fetchPostBySearch(searchQuery);
+    dispatch({ type: actions.SEARCH, payload: data });
+    dispatch({ type: actions.STOP_LOADING });
+  } catch (error) {
+    console.log(error);
   }
 };

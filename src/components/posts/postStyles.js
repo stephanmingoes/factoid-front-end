@@ -2,13 +2,14 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles({
   card: {
     backgroundColor: "rgb(57, 62, 70)",
-    maxWidth: 345,
+    maxWidth: "300px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     borderRadius: "15px",
-    height: "100%",
+    height: "300px",
     position: "relative",
+    overflowY: "scroll",
   },
   media: {
     height: 0,
@@ -54,5 +55,9 @@ export const useStyles = makeStyles({
   },
   dull: {
     color: "#00c9b8",
+  },
+  cardAction: {
+    display: "block",
+    textAlign: "initial",
   },
 });

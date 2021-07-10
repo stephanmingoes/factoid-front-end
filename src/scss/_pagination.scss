@@ -1,0 +1,15 @@
+.page {
+    border-radius: 6px;
+    background-color: $color-2;
+    text-align: center;
+    padding: 0.5rem !important;
+    margin-bottom: 1.5rem;
+    &_item {
+        margin: 0.2rem 0.5rem !important;
+        color: #fff !important;
+    }
+
+    &_item[active] {
+        background-color: $color-6 !important;
+    }
+}

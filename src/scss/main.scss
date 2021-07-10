@@ -2,18 +2,21 @@
 @import "header";
 @import "form";
 @import "auth";
+@import "pagination";
+@import "post";
 body {
     background-color: $color-1;
     color: $color-4;
     font-family: sans-serif;
-    .main {
-        margin-top: 4rem;
-    }
-    .posts {
-        margin-bottom: 1rem;
-    }
 }
 @media (max-width: 768px) {
+    .fact_info {
+        grid-template-columns: 1fr;
+
+        .img_div {
+            justify-content: center;
+        }
+    }
     .container {
         flex-direction: column-reverse;
     }
@@ -32,4 +35,16 @@ body {
     .container {
         flex-direction: row;
     }
+}
+
+.card {
+    &::-webkit-scrollbar {
+        width: 1px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-3;
+    }
+}
+.shadow {
+    box-shadow: 0px 0px 10px 1px rgba(24, 23, 23, 0.384) !important;
 }

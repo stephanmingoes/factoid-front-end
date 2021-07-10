@@ -45,11 +45,10 @@ export default function Navbar() {
       <Grid container justify="space-between" alignItems="stretch">
         <Grid xs={12} sm={8}>
           <div className="header_logo">
-            <img className="header_logo_img" src={image} alt="Factoid Logo" />
-
             <Typography component={Link} to="/" variant="h2">
               FACTOID
             </Typography>
+            {/* <img className="header_logo_img" src={image} alt="Factoid Logo" /> */}
           </div>
         </Grid>
         <Grid xs={12} sm={4}>
