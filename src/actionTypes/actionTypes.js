@@ -10,3 +10,4 @@ export const SEARCH = "SEARCH";
 export const START_LOADING = "START_LOADING";
 export const STOP_LOADING = "STOP_LOADING";
 export const FETCH_POST = "FETCH_POST";
+export const COMMENT = "COMMENT";

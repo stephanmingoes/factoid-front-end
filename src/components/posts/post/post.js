@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardActions,
@@ -17,7 +17,6 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/post";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
-import TouchRipple from "@material-ui/core/ButtonBase/TouchRipple";
 
 export default function Post({ post, setCurrentId }) {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -25,10 +24,22 @@ export default function Post({ post, setCurrentId }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const liked = post.likes.find(
-    (like) => like === (user?.result?.googleId || user?.result?._id)
-  );
+  const userId = user?.result?.googleId || user?.result?._id;
+  const [likes, setLikes] = useState(post?.likes);
 
+  const liked = post.likes.find((like) => like === userId);
+  const [isLiked, setIsLiked] = useState(liked);
+  const handleLike = async () => {
+    dispatch(likePost(post._id));
+
+    if (liked) {
+      setIsLiked(!isLiked);
+      setLikes(post?.likes.filter((id) => id !== userId));
+    } else {
+      setIsLiked(!isLiked);
+      setLikes([...post.likes, userId]);
+    }
+  };
   const OpenPost = () => {
     history.push(`/posts/${post._id}`);
   };
@@ -90,16 +101,14 @@ export default function Post({ post, setCurrentId }) {
           className={classes.white}
           size="small"
           disabled={!user?.result}
-          onClick={() => {
-            dispatch(likePost(post._id));
-          }}
+          onClick={handleLike}
         >
-          {liked ? (
+          {isLiked ? (
             <ThumbUpAltIcon className={classes.like} />
           ) : (
             <ThumbUpAltOutlinedIcon className={classes.like} />
           )}
-          {post.likes.length}
+          {likes.length}
         </Button>
         {post.name === user?.result?.name ? (
           <Button

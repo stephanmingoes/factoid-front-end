@@ -1,0 +1,47 @@
+.comment_section {
+    margin-top: 0.7rem !important;
+    .comments {
+        padding: 1rem;
+        .comment_heading {
+            margin: 0 !important;
+            margin-bottom: 1rem !important;
+            font-weight: 600 !important;
+        }
+        @extend .card;
+        width: 100%;
+        max-height: 150px;
+        overflow-y: scroll;
+    }
+    .comment_input {
+        padding: 1rem;
+        textarea {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            background-color: $color-1;
+            width: 100%;
+            height: 100px;
+            &:focus {
+                border: none;
+                outline: none;
+            }
+
+            &::placeholder {
+                color: #fff;
+            }
+        }
+
+        .comment_btn {
+            color: #fff;
+            background-color: $color-3;
+            width: 100%;
+
+            &:hover {
+                background-color: #049b8e;
+            }
+        }
+    }
+}

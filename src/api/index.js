@@ -1,5 +1,6 @@
 import axios from "axios";
-// "https://factoid-backend.herokuapp.com"
+
+// https://factoid-backend.herokuapp.com
 const API = axios.create({ baseURL: "https://factoid-backend.herokuapp.com" });
 
 API.interceptors.request.use((req) => {
@@ -30,6 +31,9 @@ export const updatePost = (id, postData) => API.patch(`/posts/${id}`, postData);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+
+export const comment = (value, id) =>
+  API.post(`/posts/${id}/commentPost`, { value });
 
 export const signIn = (state) => API.post("/user/signin", state);
 

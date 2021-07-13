@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { getPost, getPostBySearch } from "../../actions/post";
 import { useParams, useHistory } from "react-router-dom";
+import CommentSection from "./commentSection";
 
 export default function PostDetails() {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -41,8 +42,7 @@ export default function PostDetails() {
           </h3>
           <h5>Realtime Chat - coming soon!</h5>
           <hr />
-          <h5>Comments - comming soon!</h5>
-          <hr />
+          <CommentSection post={post} />
         </div>
         <div className="img_div">
           <img src={post.selectedFile} alt={post.title} />

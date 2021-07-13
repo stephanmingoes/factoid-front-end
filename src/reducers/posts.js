@@ -34,6 +34,14 @@ const reducer = (state = { isLoading: true, posts: [] }, action) => {
           post._id === action.payload._id ? action.payload : post
         ),
       };
+
+    case actions.COMMENT:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+      };
     case actions.SEARCH:
       return { ...state, posts: action.payload };
 
